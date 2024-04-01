@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WarrantyController">
+   <children>
+      <Text layoutX="447.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNN" />
+      <Label layoutX="86.0" layoutY="131.0" text="Warranty ID " />
+      <Text layoutX="172.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warranty Card" wrappingWidth="167.48828125">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="73.0" fitWidth="83.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageView/DNN.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="85.0" layoutY="172.0" text="Staff " />
+      <Label layoutX="86.0" layoutY="207.0" text="Customer ID" />
+      <Label layoutX="87.0" layoutY="242.0" text="Date" />
+      <Label layoutX="83.0" layoutY="278.0" text="Status" />
+      <TextField fx:id="txtID" layoutX="172.0" layoutY="127.0" prefHeight="25.0" prefWidth="177.0" promptText="Warranty ID " />
+      <TextField fx:id="txtStatus" layoutX="173.0" layoutY="274.0" prefHeight="25.0" prefWidth="177.0" />
+      <DatePicker fx:id="txtDate" layoutX="172.0" layoutY="238.0" prefHeight="25.0" prefWidth="177.0" />
+      <ComboBox fx:id="txtStaff" layoutX="173.0" layoutY="168.0" prefHeight="25.0" prefWidth="177.0" />
+      <ComboBox fx:id="txtCusID" layoutX="172.0" layoutY="203.0" prefHeight="25.0" prefWidth="177.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="17.0" layoutY="373.0" stroke="#efe9e9" strokeType="INSIDE" width="512.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutY="640.0" stroke="#f5f3f3" strokeType="INSIDE" width="512.0" />
+      <Text layoutX="212.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.0" />
+      <Label layoutX="395.0" layoutY="644.0" prefHeight="17.0" prefWidth="103.0" text="Hotline: 099999999" textFill="#f2ebeb" />
+      <JFXTextArea layoutX="16.0" layoutY="390.0" prefHeight="239.0" prefWidth="490.0" text="1.Warranty terms:&#10; ➣Warranty period:&#10;     +12 months for the product.&#10; ➣Warranty conditions:&#10;     +The product is warranted for free if a manufacturer error occurs within the warranty period.&#10;     + Warranty card is intact, not torn, erased or modified.&#10;     + DNN company's warranty stamp is intact on the product.&#10;     + The product is used strictly according to the accompanying instructions for use.&#10;❌ Note:&#10;    + Customers should keep the warranty card carefully to enjoy warranty benefits.&#10;    +For further details, please contact the warranty center of DNN company.&#10;Wishing customers happy use of the product!" unFocusColor="#fcefef" />
+      <Button fx:id="btnConfirm" layoutX="219.0" layoutY="321.0" mnemonicParsing="false" onAction="#btnConfirm_click" text="Confirm" />
+   </children>
+</AnchorPane>

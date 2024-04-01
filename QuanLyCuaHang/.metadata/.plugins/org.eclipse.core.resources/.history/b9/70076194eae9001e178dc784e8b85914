@@ -1,0 +1,133 @@
+package Bus;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
+import model.CChiTietPhieuNhapKho;
+import model.CPhieuNhapKho;
+import model.connectDB;
+
+public class busImportProduct {
+	connectDB cnn = new connectDB();
+	Connection connection = cnn.getConnection();
+	PreparedStatement pstm;
+
+	// Lưu phiếu nhập kho
+	public boolean savePhieuNhap(CPhieuNhapKho nhapkho) {
+		String sql = "INSERT INTO `phieunhapkho`(`phieunhap_id`, `ngaynhap`, `supplier_id`, "
+				+ "`userID`) VALUES (?,?,?,?)";
+		try {
+			pstm = connection.prepareStatement(sql);
+			pstm.setString(1, nhapkho.getPhieuNhapID());
+			// Chuyển đổi đối tượng Date thành chuỗi
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String strNgayNhap = sdf.format(nhapkho.getNgaynhap());
+			pstm.setString(2, strNgayNhap);
+			pstm.setString(3, nhapkho.getSupplierID().getSupplier_id());
+			pstm.setString(4, nhapkho.getUserID().getUserID());
+
+			// Thực hiện thêm dữ liệu vào cơ sở dữ liệu
+			int rs = pstm.executeUpdate();
+
+			// Trả về true nếu có ít nhất một dòng được thêm vào cơ sở dữ liệu
+			return rs > 0;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+//	public boolean addChiTietPhieuNhap(String idPhieuNhap, String idSanPham, int soLuong, double giaNhap) {
+//		String sql = "INSERT INTO `chitietphieunhapkho`(`phieunhap_id`, `product_id`, `so_luong`, `gia_nhap`) "
+//				+ "VALUES (?,?,?,?)";
+//		try {
+//			pstm = connection.prepareStatement(sql);
+//			pstm.setString(1, idPhieuNhap);
+//			pstm.setString(2, idSanPham);
+//			pstm.setInt(3, soLuong);
+//			pstm.setDouble(4, giaNhap);
+//			int rs = pstm.executeUpdate();
+//			return rs != 0;
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+	public boolean addChiTietPhieuNhap(CChiTietPhieuNhapKho chitiet) {
+		String sql = "INSERT INTO `chitietphieunhapkho`(`phieunhap_id`, `product_id`, `so_luong`, `gia_nhap`) "
+				+ "VALUES (?,?,?,?)";
+		try {
+			pstm = connection.prepareStatement(sql);
+			pstm.setString(1, chitiet.getPhieunhap_id());
+			pstm.setString(2, chitiet.getProduct_id());
+			pstm.setInt(3, chitiet.getSoluong());
+			pstm.setDouble(4, chitiet.getGiaNhap());
+			int rs = pstm.executeUpdate();
+			return rs != 0;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+	//Cập nhật lại số lượng sản phẩm trên csdl
+	public boolean updateSoLuongSP(int soLuong, String productID) {
+		String sql ="UPDATE sanpham SET soluong = soluong + ? WHERE product_id = ?";
+		try {
+			pstm = connection.prepareStatement(sql);
+			pstm.setInt(1, soLuong);
+			pstm.setString(2, productID);
+			int rs = pstm.executeUpdate();
+			return rs != 0;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+	//lấy ra tất cả ID phiếu nhập kho và ngày
+	public ArrayList<CPhieuNhapKho> getIDPhieuNhap(){
+		String sql= "SELECT phieunhap_id FROM phieunhapkho ";
+		ArrayList<CPhieuNhapKho> listPhieuKho = new ArrayList<>();
+		try {
+			pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next())
+			{
+				String IdPhieuNhap =rs.getString("phieunhap_id");
+				CPhieuNhapKho pn = new CPhieuNhapKho();
+				pn.setPhieuNhapID(IdPhieuNhap);
+				listPhieuKho.add(pn);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return listPhieuKho;
+	}
+	//Kiểm tra phiếu nhập có hay không
+	public boolean checkIDPhieuNhap(String idphieunhap) {
+		String sql = "SELECT COUNT(*) FROM phieunhapkho WHERE phieunhap_id = ?";
+		try {
+			pstm = connection.prepareStatement(sql);
+			pstm.setString(1, idphieunhap);
+			ResultSet rs = pstm.executeQuery();
+			 if (rs.next()) {
+	                int count = rs.getInt(1);
+	                return count > 0; 
+	            }
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		return false;
+	}
+}

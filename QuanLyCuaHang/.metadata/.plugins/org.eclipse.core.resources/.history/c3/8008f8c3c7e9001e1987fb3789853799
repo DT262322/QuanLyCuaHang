@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductListController2">
+   <children>
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="926.0">
+         <padding>
+            <Insets left="850.0" />
+         </padding>
+      </MenuBar>
+      <TableView fx:id="tbSp" layoutY="298.0" prefHeight="312.0" prefWidth="926.0">
+        <columns>
+          <TableColumn fx:id="colProductID" prefWidth="77.59997862577438" text="product_id" />
+          <TableColumn fx:id="colProductName" prefWidth="127.20001220703125" text="product_name" />
+            <TableColumn fx:id="colCategoryID" prefWidth="86.39994812011719" text="category_id" />
+            <TableColumn fx:id="colQuantity" prefWidth="68.800048828125" text="quantity" />
+            <TableColumn fx:id="colColor" prefWidth="53.60003662109375" text="color" />
+            <TableColumn fx:id="colPrice" prefWidth="47.20001220703125" text="price" />
+            <TableColumn fx:id="colDescription" prefWidth="172.0" text="description" />
+            <TableColumn fx:id="colWiredorWireless" prefWidth="112.0" text="wired_or_wireless" />
+            <TableColumn fx:id="colIMG" prefWidth="179.9998779296875" text="image_url" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtPDid" layoutX="125.0" layoutY="84.0" prefHeight="26.0" prefWidth="190.0" promptText="Product_ID" />
+      <Label layoutX="11.0" layoutY="97.0" text="Product_ID" />
+      <Label layoutX="430.0" layoutY="40.0" prefHeight="26.0" prefWidth="118.0" text="PRODUCT LIST" textAlignment="CENTER" textFill="#165a99">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSoLuong" layoutX="430.0" layoutY="83.0" prefHeight="26.0" prefWidth="100.0" promptText="Quantity" />
+      <Label layoutX="12.0" layoutY="156.0" prefHeight="26.0" prefWidth="89.0" text="Product_Name" textFill="#181717" />
+      <Label layoutX="11.0" layoutY="127.0" prefHeight="26.0" prefWidth="70.0" text="Category_id" />
+      <TextField fx:id="txtCategogyID" layoutX="125.0" layoutY="117.0" prefHeight="26.0" prefWidth="190.0" promptText="Category_id" />
+      <TextField fx:id="txtPDname" layoutX="125.0" layoutY="151.0" prefHeight="26.0" prefWidth="190.0" promptText="Product_Name" />
+      <Label layoutX="369.0" layoutY="97.0" text="Quantity" />
+      <Label layoutX="12.0" layoutY="217.0" prefHeight="26.0" prefWidth="107.0" text="Wired_or_wireless" />
+      <TextField fx:id="txtPrice" layoutX="430.0" layoutY="116.0" prefHeight="26.0" prefWidth="100.0" promptText="Price" />
+      <TextField fx:id="txtDes" layoutX="125.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="Description" />
+      <Label layoutX="368.0" layoutY="160.0" text="Color" />
+      <Label layoutX="369.0" layoutY="127.0" text="Price" />
+      <TextField fx:id="txtColor" layoutX="430.0" layoutY="150.0" prefHeight="26.0" prefWidth="100.0" promptText="Color" />
+      <Group layoutX="-2.0" layoutY="82.0">
+         <children>
+            <BorderPane />
+         </children>
+      </Group>
+      <Button fx:id="btnUpdatesp" layoutX="538.0" layoutY="115.0" mnemonicParsing="false" onAction="#btnUpdatesp_click" prefHeight="30.0" prefWidth="66.0" text="Update" />
+      <Button fx:id="btnDeletesp" layoutX="538.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnDeletesp_click" prefHeight="30.0" prefWidth="66.0" text="Delete" />
+      <Button fx:id="btnAddsp" layoutX="538.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnAddsp_click" prefHeight="30.0" prefWidth="66.0" text="Add" />
+      <Text layoutX="743.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNN" />
+      <TextField fx:id="txtTimKiem" layoutX="368.0" layoutY="217.0" onKeyReleased="#handleTimKiem" prefHeight="26.0" prefWidth="236.0" promptText="🔎 search" />
+      <Label layoutX="12.0" layoutY="186.0" prefHeight="26.0" prefWidth="68.0" text="Description" textFill="#181717" />
+      <TextField fx:id="txtWiredorWireless" layoutX="125.0" layoutY="212.0" prefHeight="26.0" prefWidth="190.0" promptText="Wired_or_wireless" />
+      <Label layoutX="368.0" layoutY="190.0" text="Image" />
+      <TextField fx:id="txtIMG" layoutX="430.0" layoutY="182.0" prefHeight="26.0" prefWidth="100.0" promptText="Image_url" />
+      <ImageView fx:id="imageView" fitHeight="187.0" fitWidth="256.0" layoutX="689.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageView/DNN.jpg" />
+         </image></ImageView>
+      <Button fx:id="btnChooseImage" layoutX="538.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnChooseImage_click" prefHeight="30.0" prefWidth="66.0" text="Chooce" />
+      <Button fx:id="btnPrint" layoutX="18.0" layoutY="259.0" mnemonicParsing="false" onAction="#btnPrint_click" text="Print" />
+   </children>
+</AnchorPane>

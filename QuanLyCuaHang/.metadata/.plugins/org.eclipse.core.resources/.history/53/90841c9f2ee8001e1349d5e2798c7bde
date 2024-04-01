@@ -1,0 +1,31 @@
+/* Áp dụng cho root AnchorPane */
+.root {
+    -fx-background-color: #f0f0f0; /* Màu nền */
+}
+
+/* Áp dụng cho các Text */
+Text {
+    -fx-fill: #333; /* Màu chữ */
+}
+
+/* Áp dụng cho TableView */
+TableView {
+    -fx-background-color: white; /* Màu nền */
+    -fx-border-color: #ddd; /* Màu viền */
+    -fx-border-width: 1px; /* Độ rộng viền */
+    -fx-border-radius: 5px; /* Độ cong góc */
+}
+
+/* Áp dụng cho Button, ComboBox, TextField và RadioButton */
+Button, ComboBox, TextField, RadioButton {
+    -fx-background-color: #4CAF50; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-size: 14px; /* Kích thước chữ */
+}
+
+/* Áp dụng cho ImageView */
+ImageView {
+    -fx-border-color: #ddd; /* Màu viền */
+    -fx-border-width: 1px; /* Độ rộng viền */
+    -fx-border-radius: 5px; /* Độ cong góc */
+}

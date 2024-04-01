@@ -1,0 +1,41 @@
+/* Định nghĩa kiểu cho class card */
+.card {
+    -fx-background-color: white; /* Màu nền */
+    -fx-border-color: #CCCCCC; /* Màu viền */
+    -fx-border-width: 1px; /* Độ dày của viền */
+    -fx-border-radius: 5px; /* Độ cong viền */
+    -fx-padding: 10px; /* Khoảng cách nội dung và viền */
+}
+
+/* Định nghĩa kiểu cho class shadow (đổ bóng) */
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 0); /* Hiệu ứng đổ bóng */
+}
+
+/* Định nghĩa kiểu cho button trong class card */
+.card .button {
+    -fx-background-color: #2196F3; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-size: 10px; /* Kích thước chữ */
+    -fx-pref-height: 25px; /* Chiều cao */
+    -fx-pref-width: 80px; /* Chiều rộng */
+    -fx-border-radius: 5px; /* Độ cong viền */
+}
+
+/* Định nghĩa kiểu cho spinner trong class card */
+.card .spinner {
+    -fx-pref-height: 25px; /* Chiều cao */
+    -fx-pref-width: 80px; /* Chiều rộng */
+}
+
+/* Định nghĩa kiểu cho label trong class card */
+.card .label {
+    -fx-font-size: 10px; /* Kích thước chữ */
+    -fx-padding: 0 10px; /* Khoảng cách nội dung và viền */
+}
+
+/* Định nghĩa kiểu cho image view trong class card */
+.card .image-view {
+    -fx-fit-width: 150px; /* Chiều rộng của hình ảnh */
+    -fx-fit-height: 94px; /* Chiều cao của hình ảnh */
+}

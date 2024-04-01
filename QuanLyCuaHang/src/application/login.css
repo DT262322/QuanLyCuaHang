@@ -1,0 +1,42 @@
+/* Đặt một hình nền cho AnchorPane */
+#anchorPane {
+    -fx-background-color: #f4f4f4; /* Màu nền */
+}
+
+/* Thiết lập màu và font chữ cho các nhãn */
+.text {
+    -fx-text-fill: #165a99; /* Màu chữ */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Thiết lập góc bo tròn và đổ bóng cho nút */
+.button {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: #165a99; /* Màu nền nút */
+    -fx-text-fill: #ffffff; /* Màu chữ nút */
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #13476e; /* Màu nền khi hover */
+}
+
+/* Thiết lập màu và font chữ cho CheckBox và Hyperlink */
+.checkbox, .hyperlink {
+    -fx-text-fill: #165a99; /* Màu chữ */
+    -fx-font-size: 12px;
+}
+
+/* Thiết lập màu và font chữ cho ComboBox */
+.combobox {
+    -fx-text-fill: #165a99; /* Màu chữ */
+    -fx-font-size: 5px;
+}
+
+/* Thiết lập màu và font chữ cho TextField và PasswordField */
+.text-field, .password-field {
+    -fx-text-fill: #000000; /* Màu chữ */
+    -fx-font-size: 14px;
+}

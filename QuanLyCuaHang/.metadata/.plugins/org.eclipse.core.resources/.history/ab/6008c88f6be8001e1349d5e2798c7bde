@@ -1,0 +1,10 @@
+.button {
+    -fx-background-color: #4CAF50; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-size: 14px; /* Cỡ chữ */
+    -fx-font-weight: bold; /* Độ đậm của chữ */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Màu nền khi di chuột vào */
+}

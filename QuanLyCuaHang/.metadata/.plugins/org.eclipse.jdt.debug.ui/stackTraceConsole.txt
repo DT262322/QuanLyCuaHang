@@ -1,0 +1,3 @@
+INSERT INTO `quanlynhanvien` (`userID`, `password`, `hoten`, `ngayvaolam`, `gioitinh`, `ngay_sinh`, `so_dien_thoai`, `cccd`, `chucvu_id`) VALUES
+('NV01', '12345', 'Trần Quốc Duy', '2024-03-06', 'Nam', '1990-01-01', '0987654321', '123456789012', 'NV'),
+('QL01', '67890', 'Nguyễn Thị Quản Lý', '2024-03-06', 'Nữ', '1985-05-05', '0123456789', '098765432109', 'QL');

@@ -1,0 +1,43 @@
+/* styles.css */
+
+/* Định dạng cho Label có fx:id="lableGia" */
+#lableGia {
+    -fx-font-size: 12px;
+    -fx-text-fill: red;
+}
+
+/* Định dạng cho Label có fx:id="lableSL" */
+#lableSL {
+    -fx-font-size: 12px;
+    -fx-text-fill: red;
+}
+
+/* Định dạng cho Label có fx:id="lableIDPhieu" */
+#lableIDPhieu {
+    -fx-font-size: 12px;
+    -fx-text-fill: red;
+}
+
+/* Định dạng cho Button có fx:id="btnAddTBV" */
+#btnAddTBV {
+    -fx-background-color: #4CAF50; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Định dạng cho Button có fx:id="btnLuuPhieuNhap" */
+#btnLuuPhieuNhap {
+    -fx-background-color: #2196F3; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Định dạng cho Button có fx:id="btnEdit" */
+#btnEdit {
+    -fx-background-color: #FF9800; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Định dạng cho Button có fx:id="bthDelete" */
+#bthDelete {
+    -fx-background-color: #F44336; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+}

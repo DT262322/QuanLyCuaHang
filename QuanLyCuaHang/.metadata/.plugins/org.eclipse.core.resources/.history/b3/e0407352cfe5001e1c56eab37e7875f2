@@ -1,0 +1,339 @@
+package controller;
+
+import java.net.URL;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import Bus.busImportProduct;
+import Bus.busProduct;
+import Bus.busSuppliers;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import model.CChiTietPhieuNhapKho;
+import model.CPhieuNhapKho;
+import model.CQuanLyNhanVien;
+import model.Product;
+import model.Suppliers;
+
+public class ImportProductController implements Initializable {
+	@FXML
+	private Label lableGia;
+	@FXML
+	private Label lableIDPhieu;
+	@FXML
+	private Label lableSL;
+	@FXML
+	private Button btnLuuPhieuNhap;
+
+	@FXML
+	private ComboBox<Suppliers> cmbNhaSX;
+
+	@FXML
+	private DatePicker dateNhapHang;
+
+	@FXML
+	private TextField txtIDNhanVien;
+
+	@FXML
+	private TextField txtIDPhieuNhap;
+	@FXML
+	private TableColumn<Product, String> colTenSanSp;
+	@FXML
+	private TableView<Product> tbvSearchSP;
+
+	@FXML
+	private TextField txtSearch;
+	@FXML
+	private Button btnAddTBV;
+	@FXML
+	private TextField txtGiaNhap;
+
+	@FXML
+	private TextField txtSoLuong;
+
+	@FXML
+	private TableColumn<CChiTietPhieuNhapKho, Double> colGiaNhap;
+
+	@FXML
+	private TableColumn<CChiTietPhieuNhapKho, String> colMaSP;
+
+	@FXML
+	private TableColumn<CChiTietPhieuNhapKho, Integer> colSoLuong;
+
+	@FXML
+	private TableColumn<CChiTietPhieuNhapKho, String> colTenSP;
+	@FXML
+	private TableView<CChiTietPhieuNhapKho> tbvNhapSP;
+	@FXML
+	private Button btnEdit;
+	@FXML
+	private Button bthDelete;
+
+	// hàm clear giá trị
+	public void clearTxt() {
+		txtSearch.clear();
+		txtSoLuong.clear();
+		txtGiaNhap.clear();
+		txtSearch.requestFocus();
+	}
+
+	@FXML
+	void bthDelete_Click(ActionEvent event) {
+		int selectedIndex = tbvNhapSP.getSelectionModel().getSelectedIndex();
+		if (selectedIndex == -1) {
+			showAlert(AlertType.WARNING, "Warning", null, "Please chooose product in table");
+			return;
+		}
+		tbvNhapSP.getItems().remove(selectedIndex);
+		tbvNhapSP.refresh();
+	}
+
+	@FXML
+	void btnEdit_Click(ActionEvent event) {
+		// Kiểm tra xem có sản phẩm nào được chọn chưa
+		int selectedIndex = tbvNhapSP.getSelectionModel().getSelectedIndex();
+		if (selectedIndex == -1) {
+			showAlert(AlertType.WARNING, "Warning", null, "Please chooose product in table");
+			return;
+		}
+		CChiTietPhieuNhapKho selectedProduct = tbvNhapSP.getSelectionModel().getSelectedItem();
+		int newSoLuong = Integer.parseInt(txtSoLuong.getText());
+		double newGiaNhap = Double.parseDouble(txtGiaNhap.getText());
+		selectedProduct.setSoluong(newSoLuong);
+		selectedProduct.setGiaNhap(newGiaNhap);
+		tbvNhapSP.refresh();
+
+	}
+
+	@FXML
+	void btnAddTBV_Click(ActionEvent event) {
+		String tenSp = txtSearch.getText();
+		String sanPhamId = ""; // Biến để lưu ID sản phẩm
+
+		// Thực hiện truy vấn SQL để lấy ID sản phẩm từ tên sản phẩm
+		sanPhamId = busProduct.findProductIdByProductName(tenSp);
+		if (checkValueAdd()) {
+			if (!sanPhamId.isEmpty()) {
+				int soLuong = Integer.parseInt(txtSoLuong.getText());
+				double giaNhap = Double.parseDouble(txtGiaNhap.getText());
+				boolean productAvailable = false;
+
+				// Kiểm tra xem sản phẩm đã tồn tại trong danh sách chi tiết nhập kho hay chưa
+				for (CChiTietPhieuNhapKho chitiet : danhsachchitiet) {
+					if (chitiet.getProduct_id().equals(sanPhamId)) {
+						// Nếu sản phẩm đã tồn tại, cập nhật số lượng và giá nhập mới
+						chitiet.setSoluong(chitiet.getSoluong() + soLuong);
+						tbvNhapSP.refresh();
+						productAvailable = true;
+						break;
+					}
+				}
+
+				if (!productAvailable) {
+					// Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới vào danh sách chi tiết nhập kho
+					CChiTietPhieuNhapKho chitiet = new CChiTietPhieuNhapKho();
+					chitiet.setProduct_id(sanPhamId);
+					chitiet.setTenSP(tenSp);
+					chitiet.setSoluong(soLuong);
+					chitiet.setGiaNhap(giaNhap);
+					danhsachchitiet.add(chitiet);
+				}
+
+				// Cập nhật TableView
+				tbvNhapSP.setItems(FXCollections.observableArrayList(danhsachchitiet));
+				colMaSP.setCellValueFactory(new PropertyValueFactory<CChiTietPhieuNhapKho, String>("product_id"));
+				colTenSP.setCellValueFactory(new PropertyValueFactory<CChiTietPhieuNhapKho, String>("tenSP"));
+				colSoLuong.setCellValueFactory(new PropertyValueFactory<CChiTietPhieuNhapKho, Integer>("soluong"));
+				colGiaNhap.setCellValueFactory(new PropertyValueFactory<CChiTietPhieuNhapKho, Double>("giaNhap"));
+				clearTxt();
+
+			} else {
+				showAlert(AlertType.ERROR, "Error", null, "Không tìm thấy ID sản phẩm cho tên sản phẩm đã nhập.");
+			}
+		}
+		return;
+
+	}
+
+	@FXML
+	void btnLuuPhieuNhap_Click(ActionEvent event) {
+		// Lấy các giá trị của phiếu nhập
+		String idPhieuNhap = txtIDPhieuNhap.getText();
+		String userID = txtIDNhanVien.getText();
+		Suppliers suppliers = cmbNhaSX.getValue();
+		Date ngaynhap = Date.valueOf(dateNhapHang.getValue());
+
+		if(!checkValueSavePhieu())
+			return;
+
+		// Tạo đối tượng user
+		CQuanLyNhanVien user = new CQuanLyNhanVien();
+		user.setUserID(userID);
+
+		// Tạo đối tượng phiếu nhập
+		CPhieuNhapKho phieunhapkho = new CPhieuNhapKho(idPhieuNhap, ngaynhap, suppliers, user);
+
+		// Lưu phiếu nhập vào cơ sở dữ liệu
+		boolean addPhieuNhap = busImport.savePhieuNhap(phieunhapkho);
+
+		if (addPhieuNhap) {
+			// Lưu các chi tiết phiếu nhập vào cơ sở dữ liệu
+			for (CChiTietPhieuNhapKho chitiet : danhsachchitiet) {
+				String idSanPham = chitiet.getProduct_id();
+				int soLuong = Integer.parseInt(chitiet.getSoluong() + "");
+				double giaNhap = Double.parseDouble(chitiet.getGiaNhap() + "");
+				CChiTietPhieuNhapKho obj = new CChiTietPhieuNhapKho(idPhieuNhap, idSanPham, soLuong, giaNhap);
+
+				// Thêm chi tiết phiếu nhập vào cơ sở dữ liệu và kiểm tra kết quả
+				boolean addChiTiet = busImport.addChiTietPhieuNhap(obj);
+				if (!addChiTiet) {
+					showAlert(AlertType.ERROR, "Error", null, "Nhập kho không thành công.");
+					return;
+				}
+			}
+
+			// Hiển thị thông báo thành công nếu mọi thứ đều ok
+			showAlert(AlertType.CONFIRMATION, "Success", null, "Nhập kho thành công.");
+		} else {
+			// Hiển thị thông báo lỗi nếu lưu phiếu nhập thất bại
+			showAlert(AlertType.ERROR, "Error", null, "Lưu phiếu nhập thất bại.");
+		}
+	}
+
+	@FXML
+	void txtSearch_Press(KeyEvent event) {
+		String query = txtSearch.getText().trim();
+		SearchProduct(query);
+	}
+
+	// Kiếm tra các giá trị
+	public boolean checkValueAdd() {
+
+		if (txtSoLuong.getText().isBlank()) {
+			lableSL.setVisible(true);
+			return false;
+		} else {
+			lableSL.setVisible(false);
+		}
+
+		// Kiểm tra trường Giá Nhập
+		if (txtGiaNhap.getText().isBlank()) {
+			lableGia.setVisible(true);
+			return false;
+		} else {
+			lableGia.setVisible(false);
+		}
+
+		return true;
+	}
+
+	public boolean checkValueSavePhieu() {
+		// Kiêm tra trương id Phiếu
+		if (txtIDPhieuNhap.getText().isBlank()) {
+			lableIDPhieu.setVisible(true);
+			return false;
+		} else {
+			lableIDPhieu.setVisible(false);
+		}
+		return true;
+	}
+
+	// Khai báo
+	busSuppliers busSupplier = new busSuppliers();
+	busImportProduct busImport = new busImportProduct();
+	busProduct busProduct = new busProduct();
+	ArrayList<Suppliers> listSupplier = new ArrayList<>();
+	ArrayList<Product> listProduct = new ArrayList<>();
+	ArrayList<CChiTietPhieuNhapKho> danhsachchitiet = new ArrayList<>();
+	ObservableList<Product> productList = FXCollections.observableArrayList();
+
+	// Nhập mã sản phẩm sẽ show ra tên sản phẩm
+	private void SearchProduct(String query) {
+		ObservableList<Product> filteredList = FXCollections.observableArrayList();
+		for (Product product : productList) {
+			if (product.getProduct_name().toLowerCase().contains(query.toLowerCase())
+					|| product.getProduct_id().toLowerCase().contains(query.toLowerCase())) {
+				filteredList.add(product);
+			}
+		}
+
+		tbvSearchSP.setItems(filteredList);
+	}
+
+	// Thoogn báo
+	public void showAlert(AlertType alertType, String title, String headerText, String contentText) {
+		Alert alert = new Alert(alertType);
+		alert.setTitle(title);
+		alert.setHeaderText(headerText);
+		alert.setContentText(contentText);
+		alert.showAndWait();
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// Ẩn lable thông báo
+		lableGia.setVisible(false);
+		lableSL.setVisible(false);
+		lableIDPhieu.setVisible(false);
+		// TODO Auto-generated method stub
+		listSupplier = busSupplier.findAll();
+		cmbNhaSX.getItems().addAll(listSupplier);
+		// Giá trị mặc định có userID
+		txtIDNhanVien.setEditable(false);
+		txtIDNhanVien.setText("NV01");
+		// Add danh sách sản phẩm vào tableview
+		listProduct = busProduct.findAll();
+		productList.addAll(listProduct);
+		tbvSearchSP.setItems(productList);
+		colTenSanSp.setCellValueFactory(new PropertyValueFactory<Product, String>("product_name"));
+		tbvSearchSP.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
+			@Override
+			public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
+				if (newValue != null) {
+					// Lấy sản phẩm được chọn từ TableView
+					Product selectedProduct = newValue;
+
+					// Hiển thị thông tin sản phẩm lên các trường thông tin tương ứng
+					txtSearch.setText(selectedProduct.getProduct_name());
+
+					// Thực hiện các hành động khác nếu cần
+				}
+			}
+
+		});
+		// Thêm listener cho table nhapSP
+		tbvNhapSP.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CChiTietPhieuNhapKho>() {
+
+			@Override
+			public void changed(ObservableValue<? extends CChiTietPhieuNhapKho> arg0, CChiTietPhieuNhapKho oldValue,
+					CChiTietPhieuNhapKho newValue) {
+				// TODO Auto-generated method stub
+				if (newValue != null) {
+					CChiTietPhieuNhapKho selectedProduct = newValue;
+					txtSearch.setText(selectedProduct.getTenSP());
+					txtGiaNhap.setText(selectedProduct.getGiaNhap() + "");
+					txtSoLuong.setText(selectedProduct.getSoluong() + "");
+				}
+			}
+		});
+	}
+
+}

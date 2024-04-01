@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
+   <children>
+      <Label layoutX="38.0" layoutY="82.0" text="Customer_id" />
+      <Button fx:id="btnCusAdd" layoutX="313.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnCusAdd_click" prefHeight="26.0" prefWidth="60.0" text="Add" />
+      <TableView fx:id="tbCus" layoutX="-1.0" layoutY="295.0" prefHeight="266.0" prefWidth="718.0">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="92.0" text="Customer_id" />
+          <TableColumn fx:id="colName" prefWidth="97.5999755859375" text="Customer_name" />
+            <TableColumn fx:id="colDate" prefWidth="99.199951171875" text="Date of birth" />
+            <TableColumn fx:id="colSex" prefWidth="108.800048828125" text="Customer_sex" />
+            <TableColumn fx:id="colAddress" prefWidth="108.800048828125" text="Address" />
+            <TableColumn fx:id="colPhone" prefWidth="99.20001220703125" text="Phone_number" />
+            <TableColumn fx:id="colEmail" prefWidth="120.0" text="Email" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtCusID" layoutX="131.0" layoutY="78.0" prefHeight="26.0" prefWidth="138.0" promptText="Customer_id" />
+      <Label layoutX="38.0" layoutY="119.0" text="Customer_name" />
+      <TextField fx:id="txtCusName" layoutX="131.0" layoutY="115.0" prefHeight="26.0" prefWidth="137.0" promptText="Customer_name" />
+      <Label layoutX="292.0" layoutY="82.0" text="Email" />
+      <TextField fx:id="txtCusEmail" layoutX="374.0" layoutY="78.0" prefHeight="26.0" prefWidth="138.0" promptText="Email" />
+      <Label layoutX="292.0" layoutY="119.0" text="Customer_sex" />
+      <Label layoutX="38.0" layoutY="159.0" text="Phone_number" />
+      <TextField fx:id="txtCusPhone" layoutX="130.0" layoutY="155.0" prefHeight="26.0" prefWidth="138.0" promptText="Phone_number" />
+      <Label layoutX="292.0" layoutY="159.0" prefHeight="18.0" prefWidth="74.0" text="Date of birth" />
+      <Label layoutX="38.0" layoutY="194.0" text="Address" />
+      <TextField fx:id="txtCusAddress" layoutX="130.0" layoutY="189.0" prefHeight="26.0" prefWidth="138.0" promptText="Address" />
+      <Button fx:id="btnCusUpdate" layoutX="383.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnCusUpdate_click" prefHeight="26.0" prefWidth="60.0" text="Update" />
+      <Button fx:id="btnCusDelete" layoutX="452.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnCusDelete_click" prefHeight="26.0" prefWidth="60.0" text="Delete" />
+      <Text layoutX="25.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNN" />
+      <ImageView fitHeight="150.0" fitWidth="151.0" layoutX="540.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageView/customer.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtSearch" layoutX="543.0" layoutY="266.0" onKeyReleased="#handKey" prefHeight="26.0" prefWidth="173.0" promptText="🔎 Search" />
+      <DatePicker fx:id="txtDate" layoutX="374.0" layoutY="155.0" prefHeight="26.0" prefWidth="138.0" promptText="Date" />
+      <CheckBox fx:id="maleBox" layoutX="389.0" layoutY="119.0" mnemonicParsing="false" onAction="#maleBox_click" text="Male" />
+      <CheckBox fx:id="femaleBox" layoutX="452.0" layoutY="119.0" mnemonicParsing="false" onAction="#femaleBox_click" text="Female" />
+   </children>
+</AnchorPane>

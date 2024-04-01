@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="696.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImportProductController">
+   <children>
+      <Pane layoutX="389.0" layoutY="202.0" prefHeight="227.0" prefWidth="251.0" style="-fx-background-color: rgb(230, 230, 230);">
+         <children>
+            <Label layoutX="21.0" layoutY="178.0" prefHeight="17.0" prefWidth="73.0" text="Ngày nhập">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dateNhapHang" layoutX="107.0" layoutY="174.0" prefHeight="25.0" prefWidth="116.0" />
+            <ComboBox fx:id="cmbNhaSX" layoutX="107.0" layoutY="136.0" prefHeight="25.0" prefWidth="116.0" />
+            <Label layoutX="21.0" layoutY="101.0" prefHeight="20.0" prefWidth="73.0" text="Nhân Viên">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtIDNhanVien" layoutX="107.0" layoutY="99.0" prefHeight="25.0" prefWidth="116.0" />
+            <Label layoutX="21.0" layoutY="65.0" prefHeight="20.0" prefWidth="73.0" text="Mã phiếu">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtIDPhieuNhap" layoutX="107.0" layoutY="63.0" prefHeight="25.0" prefWidth="116.0" />
+            <Label fx:id="lableIDPhieu" layoutX="107.0" layoutY="45.0" prefHeight="17.0" prefWidth="116.0" text="Phiếu nhập bị trùng" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="140.0" prefHeight="17.0" prefWidth="83.0" text="Nhà cung cấp">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Text layoutX="76.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin phiếu">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Text>
+            <Hyperlink fx:id="hyberLichSu" layoutX="201.0" layoutY="10.0" onAction="#hyberLichSu_Clickl" text="Lịch sử" />
+         </children>
+      </Pane>
+      <Label fx:id="nhapHangText" layoutX="239.0" layoutY="14.0" prefHeight="53.0" prefWidth="203.0" text="NHẬP HÀNG">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSearch" layoutX="14.0" layoutY="97.0" onKeyPressed="#txtSearch_Press" prefHeight="25.0" prefWidth="370.0" promptText="Nhạp sản phẩm cần tìm..." />
+      <TextField fx:id="txtSoLuong" layoutX="12.0" layoutY="154.0" prefHeight="25.0" prefWidth="90.0" promptText="Số lượng" />
+      <Button fx:id="btnAddTBV" layoutX="397.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnAddTBV_Click" prefHeight="25.0" prefWidth="141.0" text="Thêm sản phẩm" />
+      <Button fx:id="btnLuuPhieuNhap" layoutX="480.0" layoutY="448.0" mnemonicParsing="false" onAction="#btnLuuPhieuNhap_Click" prefHeight="25.0" prefWidth="141.0" text="Lưu phiếu nhập" />
+      <TableView fx:id="tbvNhapSP" layoutX="14.0" layoutY="482.0" prefHeight="200.0" prefWidth="620.0">
+        <columns>
+          <TableColumn fx:id="colMaSP" prefWidth="100.0" text="Mã Sản phẩm" />
+          <TableColumn fx:id="colTenSP" prefWidth="200.0" text="Tên sản phẩm" />
+          <TableColumn fx:id="colSoLuong" prefWidth="131.0" text="Số lượng" />
+          <TableColumn fx:id="colGiaNhap" prefWidth="188.0" text="Giá nhập" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtGiaNhap" layoutX="123.0" layoutY="154.0" prefHeight="25.0" prefWidth="116.0" promptText="Giá nhập" />
+      <TableView fx:id="tbvSearchSP" layoutX="12.0" layoutY="202.0" prefHeight="227.0" prefWidth="370.0">
+        <columns>
+          <TableColumn fx:id="colTenSanSp" prefWidth="261.0" text="Tên sản phẩm" />
+            <TableColumn fx:id="colTonKho" prefWidth="108.0" text="Tồn kho" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnEdit" layoutX="9.0" layoutY="448.0" mnemonicParsing="false" onAction="#btnEdit_Click" text="Chỉnh sửa" />
+      <Button fx:id="bthDelete" layoutX="551.0" layoutY="97.0" mnemonicParsing="false" onAction="#bthDelete_Click" prefHeight="25.0" prefWidth="69.0" text="Xóa" />
+      <Label fx:id="lableGia" layoutX="123.0" layoutY="179.0" prefHeight="17.0" prefWidth="116.0" text="Giá nhập chưa có" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label fx:id="lableSL" layoutX="12.0" layoutY="179.0" prefHeight="17.0" prefWidth="130.0" text="Số lượng chưa có" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Text layoutX="16.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sản phẩm">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="123.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá nhập">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="257.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá nhập gần nhất: " />
+      <Text fx:id="textGiaNhap" layoutX="360.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Hyperlink fx:id="hyberReset" layoutX="348.0" layoutY="77.0" onAction="#hyberReset_Click" text="Reset">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75e96f98-74ec-4ee9-9da2-527055f19863">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataQuanLyNhanVien.jrdax"/>
+	<parameter name="idphieubh" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT ctpbh.phieubh_id, 
+pbh.ngay_tao_don, 
+ctpbh.product_id, 
+SUM(ctpbh.soluong) AS total_quantity,
+SUM(ctpbh.price) AS total_price
+FROM chitietphieubanhang ctpbh 
+JOIN phieubanhang pbh 
+ON pbh.phieubh_id = ctpbh.phieubh_id
+WHERE pbh.phieubh_id =$P{idphieubh}
+GROUP BY ctpbh.phieubh_id, pbh.ngay_tao_don, ctpbh.product_id]]>
+	</queryString>
+	<field name="phieubh_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="phieubh_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="phieubh_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="chitietphieubanhang"/>
+	</field>
+	<field name="ngay_tao_don" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="ngay_tao_don"/>
+		<property name="com.jaspersoft.studio.field.label" value="ngay_tao_don"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="phieubanhang"/>
+	</field>
+	<field name="product_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="product_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="product_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="chitietphieubanhang"/>
+	</field>
+	<field name="soluong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="soluong"/>
+		<property name="com.jaspersoft.studio.field.label" value="soluong"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="chitietphieubanhang"/>
+	</field>
+	<field name="price" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="price"/>
+		<property name="com.jaspersoft.studio.field.label" value="price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="chitietphieubanhang"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="70" width="100" height="19" uuid="105f3ef0-145d-4590-aef0-4e744658edfd"/>
+				<textFieldExpression><![CDATA[$P{idphieubh}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="70" width="80" height="30" uuid="fb2b76c1-e40f-4288-aba1-db8b6817fd1d"/>
+				<text><![CDATA[Phiếu Bán Hàng :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="210" height="25" uuid="c82f8392-8111-4f66-82a6-3d993ca6f72f">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="205" height="15" uuid="dbd32cb5-d756-41db-9179-a7a2fc477233"/>
+				<text><![CDATA[Ho Chi Minh City]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="190" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="80" width="100" height="30" uuid="f3dba0ad-bb7b-4a68-ab3d-cab5faddfc2f"/>
+				<textFieldExpression><![CDATA[$F{phieubh_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="77" width="100" height="30" uuid="d2f308bf-eb9f-43e8-ae09-816c93486b28"/>
+				<textFieldExpression><![CDATA[$F{ngay_tao_don}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="77" width="100" height="30" uuid="629c64c1-eaed-41ea-b593-822a163d33c1"/>
+				<textFieldExpression><![CDATA[$F{product_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="77" width="100" height="30" uuid="78b9c9cd-38b7-4720-9cec-c04818a46539"/>
+				<textFieldExpression><![CDATA[$F{soluong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="77" width="100" height="30" uuid="42e7d227-31c8-4f90-bd7d-c15aa2b951c6"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="100" height="30" uuid="da832b71-593a-4919-82bf-ec77193ccbf6"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="30" width="100" height="30" uuid="88e7652b-2dd7-4a9d-b6a3-146f043bace3"/>
+				<text><![CDATA[Ngày tao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="30" width="100" height="30" uuid="3969a531-f786-43a1-92cc-e649db18bde9"/>
+				<text><![CDATA[Mã sp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="30" width="100" height="30" uuid="3f836d7c-ba9d-4ec5-b6b8-4d1341a4fc45"/>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="30" width="100" height="30" uuid="07619cf9-f3f8-47a4-bf7b-26a054e8fe89"/>
+				<text><![CDATA[Đơn giá]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

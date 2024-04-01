@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Text layoutX="80.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MANAGE STORE DNN" textAlignment="CENTER" wrappingWidth="240.63671875">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="181.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtTenDangNhap" layoutX="75.0" layoutY="245.0" prefHeight="38.0" prefWidth="261.0" promptText="Username" />
+      <TextField fx:id="txtShowMatKhau" layoutX="75.0" layoutY="315.0" prefHeight="38.0" prefWidth="261.0" promptText="Password" />
+      <PasswordField fx:id="txtMatKhau" layoutX="75.0" layoutY="315.0" prefHeight="38.0" prefWidth="261.0" promptText="Password" />
+      <CheckBox fx:id="checkShowMatKhau" layoutX="231.0" layoutY="371.0" mnemonicParsing="false" onAction="#checkShowMatKhau_check" text="Show password" />
+      <Button fx:id="btnDangNhap" layoutX="274.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnDangNhap_Click" prefHeight="38.0" prefWidth="77.0" text="LOGIN">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Hyperlink fx:id="hyberForgotPass" layoutX="73.0" layoutY="368.0" onAction="#hyberForgotPass_click" text="Forgot Password?" />
+      <ComboBox fx:id="cmbChucVu" layoutX="75.0" layoutY="405.0" onAction="#cmbChucVu_Click" prefHeight="25.0" prefWidth="127.0" promptText="Role" />
+      <ImageView fitHeight="97.0" fitWidth="104.0" layoutX="148.0" layoutY="90.0">
+         <image>
+            <Image url="@../ImageView/DNN.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="80.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your ID" />
+      <Text layoutX="80.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your password" />
+   </children>
+</AnchorPane>

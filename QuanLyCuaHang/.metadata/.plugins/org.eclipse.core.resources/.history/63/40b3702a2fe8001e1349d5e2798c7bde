@@ -1,0 +1,72 @@
+
+
+
+
+.text {
+    -fx-font-family: "Arial"; /* Set font family */
+    -fx-fill: #333; /* Set text color */
+}
+
+
+
+/* Apply styles to TableColumn */
+.table-column {
+    -fx-text-fill: #333; /* Set text color */
+    -fx-font-size: 14px; /* Set font size */
+}
+
+/* Apply styles to Button */
+.button {
+    
+    -fx-text-fill: #fff; /* Set text color */
+    -fx-font-family: "Arial"; /* Set font family */
+}
+
+/* Apply styles to TextField */
+.text-field {
+   
+    -fx-font-size: 14px; /* Set font size */
+}
+
+/* Apply styles to ComboBox */
+.combo-box {
+    -fx-background-color: #f9f9f9; /* Set background color */
+    -fx-font-size: 14px; /* Set font size */
+}
+
+/* Apply styles to DatePicker */
+.date-picker {
+    -fx-background-color: #f9f9f9; /* Set background color */
+    -fx-font-size: 14px; /* Set font size */
+}
+
+/* Apply styles to RadioButton */
+.radio-button {
+    -fx-text-fill: #333; /* Set text color */
+}
+
+/* Apply styles to ImageView */
+.image-view {
+    -fx-border-color: #ccc; /* Set border color */
+    -fx-border-width: 1px; /* Set border width */
+}
+
+/* Apply styles to Pane */
+.pane {
+    -fx-background-color: #fff; /* Set background color */
+}
+
+/* Apply styles to TextPrompt */
+.text-prompt {
+    -fx-fill: #999; /* Set text color */
+}
+
+/* Apply styles to TextPrompt when focused */
+.text-prompt:focused {
+    -fx-fill: transparent; /* Set text color transparent when focused */
+}
+
+/* Apply styles to TextPrompt when filled */
+.text-prompt:filled {
+    -fx-fill: transparent; /* Set text color transparent when filled */
+}

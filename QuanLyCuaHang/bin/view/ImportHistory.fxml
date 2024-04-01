@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImportHistoryController">
+   <children>
+      <ListView fx:id="lsvHistory" layoutX="21.0" layoutY="104.0" onMouseClicked="#listview_DobleClick" prefHeight="274.0" prefWidth="257.0" />
+      <Text layoutX="57.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hóa đơn nhập hàng">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtSearchPN" layoutX="24.0" layoutY="62.0" promptText="Tim kiếm...." />
+      <Button fx:id="btnSearchPN" layoutX="177.0" layoutY="62.0" mnemonicParsing="false" onAction="#btnSearchPN_Click" text="Tìm Kiếm" />
+      <Hyperlink fx:id="hyberReset" layoutX="250.0" layoutY="64.0" onAction="#hyberReset_click" prefHeight="21.0" prefWidth="36.0" text="Reset">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>

@@ -1,0 +1,10 @@
+#btnThemNV, #btnChinhSuaTT, #btnXoaNV {
+    -fx-background-color: #4CAF50; /* Màu nền mặc định */
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-size: 14px; /* Cỡ chữ */
+    -fx-font-weight: bold; /* Độ đậm của chữ */
+}
+
+#btnThemNV:hover, #btnChinhSuaTT:hover, #btnXoaNV:hover {
+    -fx-background-color: #45a049; /* Màu nền khi di chuột vào */
+}

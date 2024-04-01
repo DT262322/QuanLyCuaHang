@@ -1,0 +1,38 @@
+package controller;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import Bus.busImportProduct;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import model.CPhieuNhapKho;
+
+public class ImportHistoryController implements Initializable {
+
+    @FXML
+    private ListView<CPhieuNhapKho> lsvHistory;
+    
+    //Khai báo
+    busImportProduct busImport = new busImportProduct();
+    ArrayList<CPhieuNhapKho> phieunhap = new ArrayList<>();
+    @FXML
+    void listview_DobleClick(MouseEvent event) {
+    	if(event.getClickCount() == 2) {
+    		String str = lsvHistory.getSelectionModel().getSelectedIndex();
+    		System.out.println(str);
+    	}
+    }
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		//add danh sách hóa đơn vào listview
+		phieunhap = busImport.getIDPhieuNhap();
+		lsvHistory.getItems().addAll(phieunhap);
+	}
+
+}

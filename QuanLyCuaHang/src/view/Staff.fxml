@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StaffController">
+   <children>
+      <Text layoutX="524.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Manager">
+         <font>
+            <Font name="System Bold Italic" size="28.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tbvListNhanVien" layoutY="351.0" prefHeight="250.0" prefWidth="990.0">
+        <columns>
+          <TableColumn fx:id="tbColUserID" minWidth="-Infinity" prefWidth="88.0" text="UserID" />
+          <TableColumn fx:id="tbColHoTein" minWidth="-Infinity" prefWidth="132.0" text="Full Name" />
+            <TableColumn fx:id="tbColNgayVaoLam" minWidth="-Infinity" prefWidth="130.0" text="Date of Employment" />
+            <TableColumn fx:id="tbColGioiTinh" minWidth="-Infinity" prefWidth="60.0" text="Gender" />
+            <TableColumn fx:id="tbColNgaySinh" minWidth="-Infinity" prefWidth="98.0" text="Date of Birth" />
+            <TableColumn fx:id="tbColSoDienThoai" minWidth="-Infinity" prefWidth="112.0" text="Phone Number" />
+            <TableColumn fx:id="tbColCanCuoc" minWidth="-Infinity" prefWidth="117.0" text="Identity Card" />
+            <TableColumn fx:id="tbColEmail" minWidth="-Infinity" prefWidth="171.0" text="Email " />
+            <TableColumn fx:id="tbColChucVu" minWidth="-Infinity" text="Position" />
+            <TableColumn fx:id="tbColImaUrl" minWidth="0.0" prefWidth="0.0" text="URL_IMAGE" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnThemNV" layoutX="867.0" layoutY="311.0" mnemonicParsing="false" onAction="#btnThemNV_Clicked" prefHeight="25.0" prefWidth="109.0" text="Add Employee" />
+      <Button fx:id="btnChinhSuaTT" layoutX="732.0" layoutY="311.0" mnemonicParsing="false" onAction="#btnChinhSuaTT_Clicked" text="Change Infomation" />
+      <Button fx:id="btnXoaNV" layoutX="661.0" layoutY="311.0" mnemonicParsing="false" onAction="#btnXoaNV_Click" text="Delete" />
+      <Pane layoutX="322.0" layoutY="64.0" prefHeight="231.0" prefWidth="654.0" style="-fx-background-color: rgb(230, 230, 230);" AnchorPane.bottomAnchor="313.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="14.0">
+         <children>
+      
+            <TextField fx:id="txtHoTen" layoutX="144.0" layoutY="26.0" prefHeight="28.0" prefWidth="155.0" promptText="Full Name" />
+            <TextField fx:id="txtSoDienThoai" layoutX="446.0" layoutY="78.0" prefHeight="28.0" prefWidth="155.0" promptText="Phome Number" />
+            <TextField fx:id="txtCanCuoc" layoutX="446.0" layoutY="26.0" onMouseClicked="#btnCanCuoc" prefHeight="28.0" prefWidth="155.0" promptText="Identity Card" />
+            <ComboBox fx:id="cmbChucVu" layoutX="144.0" layoutY="190.0" prefHeight="28.0" prefWidth="155.0" promptText="Role" />
+            <DatePicker fx:id="pickerNgaySinh" layoutX="144.0" layoutY="138.0" prefHeight="28.0" prefWidth="155.0" />
+            <RadioButton fx:id="radioGioiTinhNam" layoutX="144.0" layoutY="84.0" mnemonicParsing="false" selected="true" text="Male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gioitinh" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="radioGioiTinhNu" layoutX="208.0" layoutY="84.0" mnemonicParsing="false" text="Female" toggleGroup="$gioitinh" />
+            <Text layoutX="52.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="342.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identity Card">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="341.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnBrowserImage" layoutX="342.0" layoutY="191.0" mnemonicParsing="false" onAction="#btnBrowserImage_Click" text="Upload Image">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <TextField fx:id="txtUrlImage" layoutX="446.0" layoutY="191.0" prefHeight="25.0" prefWidth="155.0" />
+            <Text layoutX="52.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="342.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Adress">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtEmail" layoutX="446.0" layoutY="138.0" prefHeight="28.0" prefWidth="155.0" promptText=".....@gmail.com" />
+            <Text layoutX="53.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="52.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgUser" fitHeight="250.0" fitWidth="250.0" layoutX="32.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnClear" layoutX="922.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnClear_clicked" text="Clear" />
+   </children>
+</AnchorPane>

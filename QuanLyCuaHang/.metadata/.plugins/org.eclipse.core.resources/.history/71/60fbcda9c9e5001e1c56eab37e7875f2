@@ -1,0 +1,84 @@
+package Bus;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
+import model.CChiTietPhieuNhapKho;
+import model.CPhieuNhapKho;
+import model.connectDB;
+
+public class busImportProduct {
+	connectDB cnn = new connectDB();
+	Connection connection = cnn.getConnection();
+	PreparedStatement pstm;
+
+	// Lưu phiếu nhập kho
+	public boolean savePhieuNhap(CPhieuNhapKho nhapkho) {
+		String sql = "INSERT INTO `phieunhapkho`(`phieunhap_id`, `ngaynhap`, `supplier_id`, "
+				+ "`userID`) VALUES (?,?,?,?)";
+		try {
+			pstm = connection.prepareStatement(sql);
+			pstm.setString(1, nhapkho.getPhieuNhapID());
+			// Chuyển đổi đối tượng Date thành chuỗi
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String strNgayNhap = sdf.format(nhapkho.getNgaynhap());
+			pstm.setString(2, strNgayNhap);
+			pstm.setString(3, nhapkho.getSupplierID().getSupplier_id());
+			pstm.setString(4, nhapkho.getUserID().getUserID());
+
+			// Thực hiện thêm dữ liệu vào cơ sở dữ liệu
+			int rs = pstm.executeUpdate();
+
+			// Trả về true nếu có ít nhất một dòng được thêm vào cơ sở dữ liệu
+			return rs > 0;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+//	public boolean addChiTietPhieuNhap(String idPhieuNhap, String idSanPham, int soLuong, double giaNhap) {
+//		String sql = "INSERT INTO `chitietphieunhapkho`(`phieunhap_id`, `product_id`, `so_luong`, `gia_nhap`) "
+//				+ "VALUES (?,?,?,?)";
+//		try {
+//			pstm = connection.prepareStatement(sql);
+//			pstm.setString(1, idPhieuNhap);
+//			pstm.setString(2, idSanPham);
+//			pstm.setInt(3, soLuong);
+//			pstm.setDouble(4, giaNhap);
+//			int rs = pstm.executeUpdate();
+//			return rs != 0;
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+	public boolean[] addChiTietPhieuNhap(ArrayList<CChiTietPhieuNhapKho> danhSachChiTiet) {
+	    boolean[] results = new boolean[danhSachChiTiet.size()];
+	    String sql = "INSERT INTO `chitietphieunhapkho`(`phieunhap_id`, `product_id`, `so_luong`, `gia_nhap`) "
+	            + "VALUES (?,?,?,?)";
+	    try {
+	        pstm = connection.prepareStatement(sql);
+	        for (int i = 0; i < danhSachChiTiet.size(); i++) {
+	            CChiTietPhieuNhapKho chitiet = danhSachChiTiet.get(i);
+	            pstm.setString(1, chitiet.getPhieunhap_id());
+	            pstm.setString(2, chitiet.getProduct_id());
+	            pstm.setInt(3, chitiet.getSoluong());
+	            pstm.setDouble(4, chitiet.getGiaNhap());
+	            int rs = pstm.executeUpdate();
+	            results[i] = rs != 0;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        Arrays.fill(results, false);
+	    }
+	    return results;
+	}
+
+}

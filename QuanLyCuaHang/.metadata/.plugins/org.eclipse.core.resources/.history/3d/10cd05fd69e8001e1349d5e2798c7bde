@@ -1,0 +1,78 @@
+/* Set background color for the entire anchor pane */
+.root {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Style for the title text */
+.text-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+/* Style for the buttons */
+.button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-border: none;
+    -fx-color: white;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Style for the text fields */
+.text-field {
+    -fx-background-color: #ffffff; /* White */
+    -fx-border-color: #ccc; /* Light Gray */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+/* Style for the combo box */
+.combo-box {
+    -fx-background-color: #ffffff; /* White */
+    -fx-border-color: #ccc; /* Light Gray */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+/* Style for the radio buttons */
+.radio-button {
+    -fx-font-size: 14px;
+}
+
+/* Style for the text */
+.text {
+    -fx-font-size: 14px;
+}
+
+/* Style for the image view */
+.image-view {
+    -fx-border-color: #ccc; /* Light Gray */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+/* Style for the table view */
+.table-view {
+    -fx-background-color: #ffffff; /* White */
+    -fx-border-color: #ccc; /* Light Gray */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+/* Style for the table column headers */
+.table-column-header {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Style for the table rows */
+.table-row-cell {
+    -fx-font-size: 14px;
+}

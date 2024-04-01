@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderHistoryController">
+   <children>
+      <Text layoutX="258.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order history" wrappingWidth="167.48828125">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="73.0" fitWidth="83.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageView/DNN.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="85.0" layoutY="172.0" />
+      <Text layoutX="212.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.0" />
+      <TableView fx:id="tbHistory" layoutX="12.0" layoutY="200.0" prefHeight="330.0" prefWidth="614.0">
+        <columns>
+          <TableColumn fx:id="colPBH_ID" prefWidth="105.0" text="Mã Phiếu" />
+          <TableColumn fx:id="colNV_ID" prefWidth="90.0" text="Nhân Viên" />
+            <TableColumn fx:id="colCus_ID" prefWidth="78.0" text="Khách Hàng" />
+            <TableColumn fx:id="colDate" prefWidth="67.0" text="Ngày Mua" />
+            <TableColumn fx:id="colPD_Name" prefWidth="92.0" text="Tên Sản Phẩm" />
+            <TableColumn fx:id="colQuantity" prefWidth="77.0" text="Số Lượng" />
+            <TableColumn fx:id="colPrice" prefWidth="104.0" text="Đơn Giá" />
+            <TableColumn fx:id="colStatus" minWidth="0.0" prefWidth="0.0" text="Status" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtSearch" layoutX="14.0" layoutY="168.0" onKeyReleased="#checkSearch" prefHeight="26.0" prefWidth="186.0" promptText="🔎 Search" />
+   </children>
+</AnchorPane>

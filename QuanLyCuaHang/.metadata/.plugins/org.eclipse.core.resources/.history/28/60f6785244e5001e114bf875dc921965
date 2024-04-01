@@ -1,0 +1,45 @@
+package Bus;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
+import model.CPhieuNhapKho;
+import model.connectDB;
+
+public class busImportProduct {
+	connectDB cnn = new connectDB();
+	Connection connection = cnn.getConnection();
+	PreparedStatement pstm;
+
+	// Lưu phiếu nhập kho
+	public boolean savePhieuNhap(CPhieuNhapKho nhapkho) {
+		String sql = "INSERT INTO `phieunhapkho`(`phieunhap_id`, `ngaynhap`, `supplier_id`, "
+				+ "`userID`) VALUES (?,?,?,?)";
+		try {
+			pstm = connection.prepareStatement(sql);
+			pstm.setString(1, nhapkho.getPhieuNhapID());
+			// Chuyển đổi đối tượng Date thành chuỗi
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String strNgayNhap = sdf.format(nhapkho.getNgaynhap());
+			pstm.setString(2, strNgayNhap);
+			pstm.setString(3, nhapkho.getSupplierID().getSupplier_id());
+			pstm.setString(4, nhapkho.getUserID().getUserID());
+
+			// Thực hiện thêm dữ liệu vào cơ sở dữ liệu
+			int rs = pstm.executeUpdate();
+
+			// Trả về true nếu có ít nhất một dòng được thêm vào cơ sở dữ liệu
+			return rs > 0;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+	 // Phương thức để tìm ID sản phẩm từ tên sản phẩm
+   
+	
+}

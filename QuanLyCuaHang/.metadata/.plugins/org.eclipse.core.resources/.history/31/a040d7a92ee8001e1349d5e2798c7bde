@@ -1,0 +1,46 @@
+/* Định dạng cho Text */
+Text {
+    -fx-font-size: 28px; /* Kích thước font */
+    -fx-font-family: "System Bold Italic"; /* Font chữ */
+    -fx-fill: #333333; /* Màu chữ */
+}
+
+/* Định dạng cho TableView */
+#tbvListNhanVien {
+    -fx-background-color: white; /* Màu nền */
+}
+
+/* Định dạng cho Button */
+Button {
+    -fx-background-color: #4CAF50; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-size: 14px; /* Kích thước chữ */
+}
+
+/* Định dạng cho TextField */
+TextField {
+    -fx-prompt-text-fill: #ccc; /* Màu chữ gợi ý */
+}
+
+/* Định dạng cho RadioButton */
+RadioButton {
+    -fx-text-fill: #333333; /* Màu chữ */
+}
+
+/* Định dạng cho các Text nằm trong Pane */
+Pane Text {
+    -fx-font-size: 14px; /* Kích thước font */
+}
+
+/* Định dạng cho ImageView */
+ImageView {
+    -fx-border-color: #ddd; /* Màu viền */
+    -fx-border-width: 1px; /* Độ rộng viền */
+    -fx-border-radius: 5px; /* Độ cong góc */
+}
+
+/* Định dạng cho Button Clear */
+#btnClear {
+    -fx-background-color: #3498db; /* Màu nền */
+    -fx-text-fill: white; /* Màu chữ */
+}

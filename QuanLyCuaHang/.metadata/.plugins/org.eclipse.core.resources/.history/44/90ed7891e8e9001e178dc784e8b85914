@@ -1,0 +1,64 @@
+/* styles.css */
+/* Định dạng cho Label có fx:id="nhapHangText" */
+AnchorPane > Label {
+    -fx-font-size: 30px; /* Kích thước font */
+    -fx-font-weight: bold; /* Chữ đậm */
+    -fx-text-fill: #333333; /* Màu chữ */
+}
+
+/* Định dạng cho Label có fx:id="lableGia" */
+#lableGia {
+    -fx-font-size: 12.0px;
+    -fx-text-fill: red;
+}
+
+/* Định dạng cho Label có fx:id="lableSL" */
+#lableSL {
+    -fx-font-size: 12.0px;
+    -fx-text-fill: red;
+}
+
+/* Định dạng cho Label có fx:id="lableIDPhieu" */
+#lableIDPhieu {
+    -fx-font-size: 12.0px;
+    -fx-text-fill: red;
+}
+
+/* Định dạng cho Button có fx:id="btnAddTBV" */
+#btnAddTBV {
+    -fx-background-color: #2ecc71; /* Màu xanh lá cây */
+    -fx-text-fill: white; /* Màu chữ */
+}
+#btnAddTBV:hover {
+    -fx-background-color: #36f286; /* Màu xanh lá cây */
+    -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Định dạng cho Button có fx:id="btnLuuPhieuNhap" */
+#btnLuuPhieuNhap,#btnEdit {
+    -fx-background-color: #2c3e50; /* Màu xanh dương */
+    -fx-text-fill: white; /* Màu chữ */
+}
+#btnLuuPhieuNhap:hover,#btnEdit:hover {
+    -fx-background-color: #56799c; /* Màu xanh dương */
+    -fx-text-fill: white; /* Màu chữ */
+}
+
+
+/* Định dạng cho Button có fx:id="bthDelete" */
+#bthDelete {
+    -fx-background-color: #e74c3c; /* Màu đỏ */
+    -fx-text-fill: white; /* Màu chữ */
+}
+#bthDelete:hover {
+    -fx-background-color: #ff6042; /* Màu đỏ */
+    -fx-text-fill: white; /* Màu chữ */
+}
+
+
+
+
+/* Định dạng cho TableView có fx:id="tbvSearchSP" */
+#tbvSearchSP {
+    -fx-background-color: #bdc3c7; /* Màu nền */
+}

@@ -1,0 +1,26 @@
+package model;
+
+import java.sql.Date;
+import java.util.ArrayList;
+
+public class CQuanLyNhanVien {
+	private String userID;
+    private String password;
+    private String hoten;
+    private Date ngayvaolam;
+    private String gioitinh;
+    private Date ngay_sinh;
+    private String so_dien_thoai;
+    private String cccd;
+    private String email;
+    private String urlImage; 
+    private String status;
+    CChucVu  chucvu;
+    
+	
+	
+	
+	
+	
+    
+}

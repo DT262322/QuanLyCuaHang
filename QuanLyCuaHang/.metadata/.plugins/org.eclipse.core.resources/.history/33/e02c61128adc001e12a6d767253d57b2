@@ -1,0 +1,140 @@
+package Controller;
+
+import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
+import Model.CChucVu;
+import Model.CQuanLyNhanVien;
+import bus.BusQuanLyNhanVien;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+public class StaffController implements Initializable {
+
+    @FXML
+    private Button btnChinhSuaTT;
+
+    @FXML
+    private Button btnThemNV;
+
+    @FXML
+    private Button btnXoaNV;
+
+    @FXML
+    private ComboBox<CChucVu> cmbChucVu;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, String> tbColCanCuoc;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, String> tbColChucVu;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, String> tbColGioiTinh;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, String> tbColHoTein;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, Date> tbColNgaySinh;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, Date> tbColNgayVaoLam;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, String> tbColSoDienThoai;
+
+    @FXML
+    private TableColumn<CQuanLyNhanVien, String> tbColUserID;
+
+    @FXML
+    private TableView<CQuanLyNhanVien> tbvListNhanVien;
+
+    @FXML
+    private TextField txtCanCuoc;
+
+    @FXML
+    private TextField txtGioiTinh;
+
+    @FXML
+    private TextField txtHoTen;
+
+
+    @FXML
+    private DatePicker pickerNgaySinh;
+
+    @FXML
+    private TextField txtSoDienThoai;
+
+    @FXML
+    void btnChinhSuaTT_Clicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnThemNV_Clicked(ActionEvent event) {
+    	String userID = "NV021";
+    	String password = "12345";
+    	String hoten = txtHoTen.getText();
+    	String gioitinh = txtGioiTinh.getText();
+    	Date ngaysinh = pickerNgaySinh.getValue();
+    	String soDT = txtSoDienThoai.getText();
+    	String cccd = txtCanCuoc.getText();
+    	
+    	CQuanLyNhanVien nv = new CQuanLyNhanVien(userID, password, hoten, gioitinh, ngaysinh, soDT, cccd);
+    	nv.setChucVu(cmbChucVu.getValue());
+    	
+    	boolean kq = bus.addNhanVien(nv);
+    	if(kq) {
+    		listNhanVien.add(nv);
+            tbvListNhanVien.getItems().add(nv);
+    		JOptionPane.showMessageDialog(null, "Thêm thành công");
+    	}else {
+    		JOptionPane.showMessageDialog(null, "error");
+    	}
+    }
+
+    @FXML
+    void btnXoaNV_Click(ActionEvent event) {
+
+    }
+  //Khai báo (Lấy danh sách các chức vụ từ BusQuanLyNhanVien)
+    BusQuanLyNhanVien bus = new BusQuanLyNhanVien();
+    ArrayList<CChucVu> listChucVu = new ArrayList<>();
+    ArrayList<CQuanLyNhanVien> listNhanVien = new ArrayList<>();
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		listChucVu = bus.showChucVu();
+		cmbChucVu.getItems().addAll(listChucVu);
+		listNhanVien = bus.findAllNhanVien();
+		
+		//Thêm danh sách nhân viên vào tableview
+		tbvListNhanVien.getItems().clear();
+		tbColUserID.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, String>("userID"));
+		tbColHoTein.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, String>("hoten"));
+		tbColNgayVaoLam.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, Date>("ngayvaolam"));
+		tbColGioiTinh.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, String>("gioitinh"));
+		tbColNgaySinh.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, Date>("ngay_sinh"));
+		tbColSoDienThoai.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, String>("so_dien_thoai"));
+		tbColCanCuoc.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, String>("cccd"));
+		tbColChucVu.setCellValueFactory(new PropertyValueFactory<CQuanLyNhanVien, String>("chuc_vu"));
+		
+		tbvListNhanVien.getItems().addAll(listNhanVien);
+		
+		
+	}
+}
